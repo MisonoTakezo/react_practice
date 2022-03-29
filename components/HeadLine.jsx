@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css";
+import styles from "./HeadLine.module.css";
 const HeadLine = (props) => (
   <div>
     <h1 className={styles.title}>

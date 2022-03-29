@@ -1,6 +1,6 @@
 import { HeadLine } from "./HeadLine";
 import { Links } from "./Links";
-import styles from "../styles/Home.module.css";
+import styles from "./Main.module.css";
 
 const Main = (props) => (
   <main className={styles.main}>
