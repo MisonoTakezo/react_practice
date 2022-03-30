@@ -1,5 +1,5 @@
-import { HeadLine } from "./HeadLine";
-import { Links } from "./Links";
+import { HeadLine } from "src/components/HeadLine";
+import { Links } from "src/components/Links";
 import styles from "./Main.module.css";
 
 const Main = (props) => (
