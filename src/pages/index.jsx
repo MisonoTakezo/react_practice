@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
@@ -10,6 +10,15 @@ export default function Home() {
   const handleClick = useCallback(() => {
     setCount((count) => count + 1);
   }, []);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "lightblue";
+    console.log(count);
+    return () => {
+      document.body.style.backgroundColor = "";
+      console.log(count);
+    };
+  }, [count]);
 
   return (
     <div className={styles.container}>
