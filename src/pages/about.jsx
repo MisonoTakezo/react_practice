@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home(props) {
   const {
-    count,
+    doubleCount,
     isShown,
     handleClick,
     handleDisplay,
@@ -24,7 +24,7 @@ export default function Home(props) {
       <Header />
       {isShown ? (
         <div>
-          <h1>{count}</h1>
+          <h1>{doubleCount}</h1>
           <button onClick={handleClick}>加算</button>
         </div>
       ) : null}
