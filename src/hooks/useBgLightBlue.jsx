@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useBgLigntBlue = () => {
+const useBgLightBlue = () => {
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
     console.log("mounted");
@@ -11,4 +11,4 @@ const useBgLigntBlue = () => {
   }, []);
 };
 
-export { useBgLigntBlue };
+export { useBgLightBlue };
