@@ -9,9 +9,10 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
   const [isShown, setIsShown] = useState(false);
+  const [textArr, setTextArr] = useState([]);
 
   const handleClick = useCallback(() => {
-    setCount((count) => count + 1);
+    setCount((prevCount) => prevCount + 1);
   }, []);
 
   const handleInput = useCallback((e) => {
@@ -23,8 +24,16 @@ export default function Home() {
   }, []);
 
   const handleShow = useCallback(() => {
-    setIsShown((isShown) => !isShown);
+    setIsShown((prevIsShown) => !prevIsShown);
   }, []);
+
+  const handleSubmit = useCallback(() => {
+    if (text == "") {
+      return;
+    }
+    setTextArr((prevArr) => [...prevArr, text]);
+    setText("");
+  }, [text]);
 
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
@@ -45,6 +54,12 @@ export default function Home() {
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleShow}>{isShown ? "非表示" : "表示"}</button>
       <input type="text" value={text} onChange={handleInput} />
+      <button onClick={handleSubmit}>送信</button>
+      <ul>
+        {textArr.map((text, index) => {
+          return <li key={index}>{text}</li>;
+        })}
+      </ul>
       <Main page="index" />
       <Footer />
     </div>
