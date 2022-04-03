@@ -1,35 +1,33 @@
+import { useState, useEffect, useCallback } from "react";
 import Head from "next/head";
-import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { Main } from "src/components/Main";
 import styles from "src/styles/Home.module.css";
 
-export default function Home(props) {
+export default function Home() {
+  const [posts, setPosts] = useState([]);
+  const getPosts = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const json = await res.json();
+    console.log(json);
+    setPosts(json);
+  };
+  useEffect(() => {
+    getPosts();
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Index Page</title>
       </Head>
       <Header />
-      {props.isShown ? (
-        <div>
-          <h1>{props.count}</h1>
-          <button onClick={props.handleClick}>加算</button>
-        </div>
+      {posts.length > 0 ? (
+        <ol>
+          {posts.map((post, index) => (
+            <li key={index}>{post.title}</li>
+          ))}
+        </ol>
       ) : null}
-      <button onClick={props.handleDisplay}>
-        {props.isShown ? "非表示" : "表示"}
-      </button>
-
-      <input type="text" value={props.text} onChange={props.handleInput} />
-      <button onClick={props.handleSubmit}>送信</button>
-      <ul>
-        {props.textArr.map((text, index) => {
-          return <li key={index}>{text}</li>;
-        })}
-      </ul>
-      <Main page="index" />
-      <Footer />
     </div>
   );
 }
